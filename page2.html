@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineZone - Step 2</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: #001f3f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  margin: 0;
+}
+.box {
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 500px;
+}
+button {
+  background: #00bfff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>Loading Movie Server...</h2>
+  <p>Please wait <span id="wait">8</span> seconds while we prepare your access.</p>
+  <button id="goBtn" disabled>Continue</button>
+</div>
+<script>
+let sec = 8;
+const span = document.getElementById("wait");
+const btn = document.getElementById("goBtn");
+const timer = setInterval(()=>{
+  sec--;
+  span.textContent = sec;
+  if(sec <= 0){
+    clearInterval(timer);
+    btn.disabled = false;
+    btn.textContent = "Continue to Final Page →";
+    btn.onclick = ()=>location.href="final.html";
+  }
+},1000);
+</script>
+</body>
+</html>
